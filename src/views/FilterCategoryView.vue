@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     async getData() {
+      // sintaks this.axios tidak selalu berjalan, oleh sebab itu saya gunakan sintaks umum
       const res = await axios(
         'https://www.themealdb.com/api/json/v1/1/categories.php'
       );

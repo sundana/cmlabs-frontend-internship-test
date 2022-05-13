@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Recipes from '../components/Recipes.vue';
+import axios from 'axios'; // import axios apabila tidak menggunakan sintaks this.axios()
 
 export default {
   name: 'FoodDetails',
@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     async fetchData() {
+      // this.axios() tidak selalu berjalan di RFC ini
       const res = await axios(
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.id}`
       );
@@ -52,7 +53,7 @@ export default {
   },
   async created() {
     this.details = await this.fetchData();
-    this.youtube = this.details[0].strYoutube.replace('watch?v=', 'embed/');
+    this.youtube = this.details[0].strYoutube.replace('watch?v=', 'embed/'); // mengubah format url dari watch ke embed
   },
 };
 </script>
